@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="E-book Management System" />
-    <meta name="keywords" content="E-book Management System" />
+    <meta name="description" content="E-book Management System"/>
+    <meta name="keywords" content="E-book Management System"/>
 
-    <meta name="author" content="dreambuzz" />
+    <meta name="author" content="dreambuzz"/>
 
     <title>E-book Management System</title>
 
@@ -87,7 +87,22 @@
                     <li class="nav-item">
                         <a href="#contact" class="nav-link smoth-scroll"> Contact </a>
                     </li>
+
+                    @if(auth()->user() == null)
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link smoth-scroll">Login </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link smoth-scroll">Register </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="#" class="nav-link smoth-scroll">Dashboard</a>
+                        </li>
+                    @endif
                 </ul>
+
 
                 <ul class="list-inline top-socials-3 mb-0">
                     <li class="list-inline-item">
@@ -112,18 +127,18 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-7 col-md-12">
                 <div class="main-banner main-banner-content">
-              <span
-                  class="mb-3 d-inline-block wow fadeInLeft"
-                  data-wow-duration="400ms"
-              >eBook includes
-                <strong>iBooks, PDF & ePub</strong> versions</span
-              >
+             <span
+                 class="mb-3 d-inline-block wow fadeInLeft"
+                 data-wow-duration="400ms"
+             >eBook includes
+  <strong>PDF, Kindle, and ePub</strong> formats
+</span>
                     <h1 class="wow fadeInLeft font-serif" data-wow-delay="200ms">
-                        Build your career <br/>with Treaser
+                        Expand Your Knowledge <br/>with Our eLibrary
                     </h1>
                     <p class="mb-4 wow fadeInUp" data-wow-delay="400ms">
-                        We work with our partners to streamline project plans that don’t
-                        just deliver on product perfection, but also delivers on time.
+                        Access a wide variety of e-books across multiple genres, carefully curated to enhance your
+                        reading experience and knowledge growth.
                     </p>
                     <a
                         href="#"
@@ -156,39 +171,41 @@
                     data-wow-delay="300ms"
                 >
                     <i class="flaticon-notebook text-danger"></i>
-                    <h5 class="mb-3 mt-4">Experience</h5>
+                    <h5 class="mb-3 mt-4">Extensive eBook Collection</h5>
                     <p class="mb-0">
-                        Must explain to you how this denouncing praisig pain was give
-                        you explain to you how…
+                        Access thousands of e-books across various categories, from fiction and non-fiction to academic
+                        resources.
                     </p>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div
                     class="feature-block feature-two mb-4 mb-lg-0 wow fadeInUp"
                     data-wow-delay="400ms"
                 >
                     <i class="flaticon-responsive text-success"></i>
-                    <h5 class="mb-3 mt-4">Marketing Goals</h5>
+                    <h5 class="mb-3 mt-4">Multi-Device Compatibility</h5>
                     <p class="mb-0">
-                        Must explain to you how this denouncing praisig pain was give
-                        you explain to you how…
+                        Read your favorite e-books seamlessly on desktops, tablets, and mobile devices with responsive
+                        support.
                     </p>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6">
                 <div
                     class="feature-block feature-two mb-4 mb-lg-0 wow fadeInUp"
                     data-wow-delay="450ms"
                 >
                     <i class="flaticon-problem text-warning"></i>
-                    <h5 class="mb-3 mt-4">Targetting Vission</h5>
+                    <h5 class="mb-3 mt-4">Personalized Reading Experience</h5>
                     <p class="mb-0">
-                        Must explain to you how this denouncing praisig pain was give
-                        you explain to you how…
+                        Enjoy tailored recommendations and bookmarking features to enhance your reading journey.
                     </p>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -234,27 +251,26 @@
                             class="text-lg mb-4 wow fadeInLeft font-serif"
                             data-wow-delay="400ms"
                         >
-                            Treaser Features
+                            Key Features
                         </h2>
                         <p class="lead wow fadeInUp" data-wow-delay="420ms">
-                            This lovely, well-written book is concerned with creating
-                            typography and is essential for professionals
+                            This captivating and thoughtfully crafted book offers insights and inspiration, making it a
+                            must-read for enthusiasts and professionals alike.
                         </p>
                     </div>
 
-                    <div class="about-item2 wow fadeInUp" data-wow-delay="450ms">
-                        <div class="about-icon"><i class="flaticon-medal"></i></div>
-                        <h5>More than 10+ award achieved</h5>
-                    </div>
                     <div class="about-item2 wow fadeInUp" data-wow-delay="500ms">
                         <div class="about-icon"><i class="flaticon-reading"></i></div>
                         <h5>Read On Any Device</h5>
+                        <p>Seamless compatibility with desktops, tablets, and smartphones for uninterrupted reading.</p>
                     </div>
                     <div class="about-item2 wow fadeInUp" data-wow-delay="550ms">
                         <div class="about-icon">
                             <i class="flaticon-responsive"></i>
                         </div>
                         <h5>Very high resolution</h5>
+                        <p>Enjoy clear and crisp typography with high-resolution formats for a superior reading
+                            experience.</p>
                     </div>
                 </div>
             </div>
@@ -269,22 +285,23 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6">
-                <div class="section-heding text-center mb-70">
-                    <h2 class="text-lg mb-4">About The Book</h2>
+                <div class="section-heading text-center mb-70">
+                    <h2 class="text-lg mb-4">Read on Any Device</h2>
                     <p class="lead">
-                        This lovely, well-written book is concerned with creating
-                        typography and is essential for clients.
+                        Enjoy seamless reading experiences with e-books optimized for all devices, ensuring
+                        accessibility.
                     </p>
                 </div>
             </div>
         </div>
+
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-12">
                 <div class="book-preview mb-5 mb-lg-0">
                     <img
                         src="{{ asset('images/about/kindle.png') }}"
                         class="background-device img-fluid"
-                        alt=""
+                        alt="E-book on Kindle Device"
                     />
                     <div
                         class="owl-book owl-carousel owl-theme"
@@ -293,48 +310,45 @@
                         <div class="book-item">
                             <img
                                 src="{{ asset('images/about/book_page.png') }}"
-                                alt=""
+                                alt="Sample eBook Page 1"
                                 class="img-fluid"
                             />
                             <div class="overlay">
                                 <a
                                     href="{{ asset('images/about/book_page.png') }}"
                                     class="popup-gallery img-fluid"
-                                    data-title="Image Caption"
-                                ><i class="ti-fullscreen"></i
-                                    ></a>
+                                    data-title="Sample eBook Page"
+                                ><i class="ti-fullscreen"></i></a>
                             </div>
                         </div>
 
                         <div class="book-item">
                             <img
                                 src="{{ asset('images/about/book_page2.png') }}"
-                                alt=""
+                                alt="Sample eBook Page 2"
                                 class="img-fluid"
                             />
                             <div class="overlay">
                                 <a
                                     href="{{ asset('images/about/book_page2.png') }}"
                                     class="popup-gallery img-fluid"
-                                    data-title="Image Caption"
-                                ><i class="ti-fullscreen"></i
-                                    ></a>
+                                    data-title="Sample eBook Page"
+                                ><i class="ti-fullscreen"></i></a>
                             </div>
                         </div>
 
                         <div class="book-item">
                             <img
                                 src="{{ asset('images/about/book_page.png') }}"
-                                alt=""
+                                alt="Sample eBook Page 1"
                                 class="img-fluid"
                             />
                             <div class="overlay">
                                 <a
                                     href="{{ asset('images/about/book_page.png') }}"
                                     class="popup-gallery img-fluid"
-                                    data-title="Image Caption"
-                                ><i class="ti-fullscreen"></i
-                                    ></a>
+                                    data-title="Sample eBook Page"
+                                ><i class="ti-fullscreen"></i></a>
                             </div>
                         </div>
                     </div>
@@ -345,35 +359,26 @@
                 <div class="section-heading book-info mt-5 mt-lg-0 pl-4">
                     <div class="about-features mt-5">
                         <div class="about-item2 mb-40">
-                            <div class="about-icon"><i class="ti-crown"></i></div>
-                            <h4>More than 10+ award achieved</h4>
-                            <p>
-                                Fugit ratione, repellendus, dignissimos, ducimus voluptatem,
-                                quos. Consequatur non eum facilis, ex repellendus, vitae
-                                debitis.
-                            </p>
-                        </div>
-                        <div class="about-item2 mb-40">
                             <div class="about-icon"><i class="ti-book"></i></div>
-                            <h4>Read On Any Device</h4>
+                            <h4>Read Anytime, Anywhere</h4>
                             <p>
-                                Debitis ab ipsum a autem sit ducimus voluptatem, quos.
-                                Consequatur non eum facilis, ex repellendus, vitae debitis.
+                                Whether on a desktop, tablet, or mobile device, enjoy a seamless reading experience
+                                tailored to your preferences.
                             </p>
                         </div>
                         <div class="about-item2">
                             <div class="about-icon"><i class="ti-desktop"></i></div>
-                            <h4>Very high resolution</h4>
+                            <h4>High-Resolution eBooks</h4>
                             <p>
-                                Possimus debitis ab ipsum a autem sit ducimus voluptatem,
-                                quos. Consequatur non eum facilis, ex repellendus, vitae
-                                debitis.
+                                Experience clear and sharp text with high-resolution eBooks, designed for maximum
+                                readability and visual appeal.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -395,9 +400,10 @@
                         Customer Reviews
                     </h2>
                     <p class="lead">
-                        This lovely, well-written book is concerned with creating
-                        typography and is essential for professionals
+                        Hear what our readers have to say about their experience with this engaging and insightful
+                        e-book.
                     </p>
+
                 </div>
             </div>
             <div class="col-xl-6 col-lg-5">
@@ -538,7 +544,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="pb-4">
-                    <h2>Others books by the author</h2>
+                    <h2>Available Books</h2>
                 </div>
             </div>
         </div>
@@ -589,10 +595,9 @@
             <div class="col-xl-8">
                 <div class="section-heading mb-5">
                     <span class="featured-text">Get Connected</span>
-                    <h2 class="mb-2 text-lg font-serif">Contact Author</h2>
+                    <h2 class="mb-2 text-lg font-serif">Contact Us</h2>
                     <p class="lead">
-                        Would just like to say hello, contact us.Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit. Provident, atque!
+                        Have questions or just want to say hello? Reach out to us—we're here to help with your e-book management needs.
                     </p>
                 </div>
             </div>
@@ -719,8 +724,7 @@
                     <div class="footer-widget logo mb-5 mb-lg-0">
                         <h4>E-book Management System</h4>
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                            Distinctio natus laborum porro, nam id impedit
+                            Members can easily read and access a wide collection of e-books anytime, anywhere.
                         </p>
                         <h6 class="text-white mt-4 mb-3">Payment Worldwide:</h6>
                         <img src="{{ asset('images/about/cards-3.png') }}" alt="" class="img-fluid"/>
