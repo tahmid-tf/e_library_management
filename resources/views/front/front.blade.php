@@ -98,7 +98,7 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a href="#" class="nav-link smoth-scroll">Dashboard</a>
+                            <a href="{{ route('dashboard') }}" class="nav-link smoth-scroll">Dashboard</a>
                         </li>
                     @endif
                 </ul>
