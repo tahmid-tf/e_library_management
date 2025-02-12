@@ -27,10 +27,9 @@
         <a class="nav-link" href="{{ route('book.create') }}"
         >Add books</a
         >
-        <a class="nav-link" href="#!">View & Update Books</a>
+        <a class="nav-link" href="{{ route('book.index') }}">View & Update Books</a>
     </nav>
 </div>
-
 
 
 {{-- ------------------------- Profile Section ------------------------- --}}
@@ -44,6 +43,13 @@
         <i data-feather="bar-chart"></i>
     </div>
     Profile
+</a>
+
+<a class="nav-link" href="{{ route('front') }}">
+    <div class="nav-link-icon">
+        <i data-feather="bar-chart"></i>
+    </div>
+    Back to Home
 </a>
 
 

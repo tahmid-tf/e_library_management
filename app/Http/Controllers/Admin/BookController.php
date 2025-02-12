@@ -13,7 +13,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('panel.admin.book.view_books');
+        $books = Book::all();
+        return view('panel.admin.book.view_books', compact('books'));
     }
 
     /**
@@ -33,7 +34,7 @@ class BookController extends Controller
         $input = request()->validate([
             'title' => 'required',
             'author' => 'required',
-            'isbn' => 'required',
+            'isbn' => 'required|unique:books',
             'category' => 'required',
             'description' => 'required',
             'cover_image_link' => 'required',
