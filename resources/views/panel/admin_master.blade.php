@@ -14,6 +14,12 @@
         href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
         rel="stylesheet"
     />
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+        rel="stylesheet"
+    />
+
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}"/>
     <script
@@ -479,6 +485,13 @@
     src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js"
     crossorigin="anonymous"
 ></script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+    crossorigin="anonymous"
+></script>
+<script src="{{ asset('js/datatables/datatables-simple-demo.js') }}"></script>
+
 <script src="{{ asset('js/litepicker.js') }}"></script>
 </body>
 </html>
