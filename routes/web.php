@@ -10,14 +10,19 @@ Route::get('/', function () {
     return view('front.front');
 });
 
-// -------------------------- Admin Panel --------------------------
+// ---------------------------------------------------------------------- Admin Panel ----------------------------------------------------------------------
 
 Route::get('admin', function () {
     return view('panel.admin_master');
 });
 
 
-Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+// -------------------------- Add Books --------------------------
+
+
+// ---------------------------------------------------------------------- Admin Panel ----------------------------------------------------------------------
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,4 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+// ------------------------------- Admin Panel -------------------------------
+
+require_once __DIR__ . '/admin.php';

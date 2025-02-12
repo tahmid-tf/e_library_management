@@ -24,12 +24,27 @@
     data-bs-parent="#accordionSidenav"
 >
     <nav class="sidenav-menu-nested nav">
-        <a class="nav-link" href="#!"
+        <a class="nav-link" href="{{ route('book.create') }}"
         >Add books</a
         >
         <a class="nav-link" href="#!">View & Update Books</a>
     </nav>
 </div>
+
+
+
+{{-- ------------------------- Profile Section ------------------------- --}}
+
+<!-- Sidenav Heading (Books)-->
+<div class="sidenav-menu-heading">Profile Section</div>
+
+<!-- Sidenav Link (Dashboard)-->
+<a class="nav-link" href="{{ route('profile.edit') }}">
+    <div class="nav-link-icon">
+        <i data-feather="bar-chart"></i>
+    </div>
+    Profile
+</a>
 
 
 {{-- ----------------------------------- Admin Section ----------------------------------- --}}
