@@ -20,6 +20,7 @@ class BooksExport implements FromCollection, WithHeadings, ShouldAutoSize
     public function headings(): array
     {
         return [
+            'ID',
             'title',
             'author',
             'isbn',
@@ -33,8 +34,8 @@ class BooksExport implements FromCollection, WithHeadings, ShouldAutoSize
             'total copies',
             'available copies',
             'Archived Date',
-            'Data Created',
-            'Data Updated',
+            'Data Creation Date',
+            'Data Update Date',
         ];
     }
 }

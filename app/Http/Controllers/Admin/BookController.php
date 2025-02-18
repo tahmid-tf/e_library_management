@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exports\BooksExport;
 use App\Http\Controllers\Controller;
+use App\Imports\BooksImport;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -130,9 +131,43 @@ class BookController extends Controller
         return response()->json(['success' => true, 'message' => 'Books deleted successfully']);
     }
 
+
+//    --------------------------- Export all books ---------------------------
+
     public function export()
     {
         return Excel::download(new BooksExport(), 'books.xlsx');
+    }
+
+//    --------------------------- Import all books ---------------------------
+
+    public function import_view()
+    {
+        return view('panel.admin.book.import_book');
+    }
+
+    public function import(Request $request)
+    {
+
+        $input = $request->validate([
+            'excel_file' => 'required|mimes:xlsx,csv',
+        ]);
+
+        try {
+            Excel::import(new BooksImport(), $request->file('excel_file'));
+            return redirect()->back()->with('message', 'Books imported successfully!');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            $errorMessages = [];
+            foreach ($failures as $failure) {
+                $rowData = $failure->values(); // Get row values
+                $isbn = $rowData[3] ?? 'N/A'; // Extract ISBN (adjust index if necessary)
+//                $errorMessages[] = "Row {$failure->row()} (ISBN: {$isbn}) has an issue: " . implode(', ', $failure->errors());
+                $errorMessages[] = "Row {$failure->row()} (ISBN: {$isbn}) has an issue, the value already exists.";
+            }
+            return redirect()->back()->with('error', implode('<br>', $errorMessages));
+
+        }
     }
 
 }
