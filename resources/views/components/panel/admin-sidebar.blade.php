@@ -28,7 +28,7 @@
         >Add books</a
         >
         <a class="nav-link" href="{{ route('book.index') }}">View & Update Books</a>
-        <a class="nav-link" href="">Export Books</a>
+        <a class="nav-link" href="{{ route('books.export') }}">Export Books</a>
         <a class="nav-link" href="">Import Books</a>
     </nav>
 </div>

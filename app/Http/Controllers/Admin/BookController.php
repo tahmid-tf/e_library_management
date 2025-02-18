@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\BooksExport;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
 {
@@ -126,6 +128,11 @@ class BookController extends Controller
         Book::whereIn('id', $bookIds)->delete();
 
         return response()->json(['success' => true, 'message' => 'Books deleted successfully']);
+    }
+
+    public function export()
+    {
+        return Excel::download(new BooksExport(), 'books.xlsx');
     }
 
 }
