@@ -9,7 +9,7 @@
                         <div class="col-auto mb-3">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="user-plus"></i></div>
-                                Add Book
+                                Edit Book
                             </h1>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                 <div class="col-xl-12">
                     <!-- Account details card-->
                     <div class="card mb-4">
-                        <div class="card-header">Add Books</div>
+                        <div class="card-header">Edit Book</div>
                         <div class="card-body">
 
 
@@ -32,15 +32,16 @@
                                 </div>
                             @endif
 
-                            <form action="{{ route('book.store') }}" method="post">
+                            <form action="{{ route('book.update', $book->id) }}" method="post">
                                 {{ csrf_field() }}
+                                @method('put')
 
                                 <div class="row gx-3 mb-3">
                                     <!-- Book Title -->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputTitle">Book Title</label>
                                         <input class="form-control" id="inputTitle" type="text"
-                                               placeholder="Enter book title" name="title" value="{{ old('title') }}"
+                                               placeholder="Enter book title" name="title" value="{{ $book->title ?? '' }}"
                                                required/>
 
 
@@ -56,7 +57,7 @@
                                         <label class="small mb-1" for="inputAuthor">Author</label>
                                         <input class="form-control" id="inputAuthor" type="text"
                                                placeholder="Enter author's name" required name="author"
-                                               value="{{ old('author') }}"/>
+                                               value="{{ $book->author ?? '' }}"/>
 
                                         @error('author')
                                         <br>
@@ -70,7 +71,7 @@
                                     <div class="col-md-4">
                                         <label class="small mb-1" for="inputISBN">ISBN</label>
                                         <input class="form-control" id="inputISBN" type="text" placeholder="Enter ISBN"
-                                               required name="isbn" value="{{ old('isbn') }}"/>
+                                               required name="isbn" value="{{ $book->isbn ?? '' }}"/>
 
                                         @error('isbn')
                                         <br>
@@ -83,7 +84,7 @@
                                         <label class="small mb-1" for="inputCategory">Category</label>
                                         <input class="form-control" id="inputCategory" type="text"
                                                placeholder="Enter category" required name="category"
-                                               value="{{ old('category') }}"/>
+                                               value="{{ $book->category ?? '' }}"/>
 
                                         @error('category')
                                         <br>
@@ -98,7 +99,7 @@
                                         <input class="form-control" id="inputCategory" type="text"
                                                placeholder="Enter Book Tags like e,g: horror,romance,education" required
                                                name="book_tags"
-                                               value="{{ old('book_tags') }}"/>
+                                               value="{{ $book->book_tags ?? '' }}"/>
 
                                         @error('book_tags')
                                         <br>
@@ -113,7 +114,7 @@
                                         <label class="small mb-1" for="inputDescription">Description</label>
                                         <textarea class="form-control" id="inputDescription" rows="3"
                                                   placeholder="Enter book description"
-                                                  name="description">{{ old('description') }}</textarea>
+                                                  name="description">{{ $book->description ?? '' }}</textarea>
 
                                         @error('description')
                                         <br>
@@ -128,7 +129,7 @@
                                         <label class="small mb-1" for="inputCoverImage">Cover Image Link From Google
                                             Drive</label>
                                         <input class="form-control" id="inputCoverImage" type="text"
-                                               name="cover_image_link" value="{{ old('cover_image_link') }}"/>
+                                               name="cover_image_link" value="{{ $book->cover_image_link ?? '' }}"/>
 
                                         @error('cover_image_link')
                                         <br>
@@ -141,7 +142,7 @@
                                         <label class="small mb-1" for="inputFile">Book File Link From Google
                                             Drive</label>
                                         <input class="form-control" id="inputFile" type="text" name="book_file_link"
-                                               value="{{ old('book_file_link') }}"/>
+                                               value="{{ $book->book_file_link ?? '' }}"/>
                                         @error('book_file_link')
                                         <br>
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -155,7 +156,7 @@
                                         <label class="small mb-1" for="inputPublisher">Publisher</label>
                                         <input class="form-control" id="inputPublisher" type="text"
                                                placeholder="Enter publisher's name" name="publisher"
-                                               value="{{ old('publisher') }}"/>
+                                               value="{{ $book->publisher ?? '' }}"/>
                                         @error('publisher')
                                         <br>
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -166,7 +167,7 @@
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputEdition">Edition</label>
                                         <input class="form-control" id="inputEdition" type="text"
-                                               placeholder="Enter edition" name="edition" value="{{ old('edition') }}"/>
+                                               placeholder="Enter edition" name="edition" value="{{ $book->edition ?? '' }}"/>
                                         @error('edition')
                                         <br>
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -179,7 +180,7 @@
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputTotalCopies">Total Copies</label>
                                         <input class="form-control" id="inputTotalCopies" type="number" min="1"
-                                               value="1" required name="total_copies"/>
+                                               value="{{ $book->total_copies ?? '' }}" required name="total_copies"/>
                                         @error('total_copies')
                                         <br>
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -190,7 +191,7 @@
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputAvailableCopies">Available Copies</label>
                                         <input class="form-control" id="inputAvailableCopies" type="number" min="1"
-                                               value="1" required name="available_copies"/>
+                                               value="{{ $book->available_copies ?? '' }}" required name="available_copies"/>
                                         @error('available_copies')
                                         <br>
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -199,7 +200,7 @@
                                 </div>
 
                                 <!-- Submit button -->
-                                <button class="btn btn-primary" type="submit">Add Book</button>
+                                <button class="btn btn-primary" type="submit">Update Book</button>
                             </form>
 
                         </div>

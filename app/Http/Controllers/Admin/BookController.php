@@ -31,11 +31,13 @@ class BookController extends Controller
     public function store(Request $request)
     {
 
+
         $input = request()->validate([
             'title' => 'required',
             'author' => 'required',
             'isbn' => 'required|unique:books',
             'category' => 'required',
+            'book_tags' => 'required',
             'description' => 'required',
             'cover_image_link' => 'required',
             'book_file_link' => 'required',
@@ -47,7 +49,7 @@ class BookController extends Controller
 
         Book::create($input);
         session()->flash('message', 'Book added successfully.');
-        return back();
+        return redirect(route('book.index'));
 
     }
 
@@ -64,7 +66,13 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::find($id);
+
+        if (!$book) {
+            return "Book not found";
+        }
+
+        return view('panel.admin.book.edit_book', compact('book'));
     }
 
     /**
@@ -72,7 +80,31 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $book = Book::find($id);
+
+        if (!$book) {
+            return "Book not found";
+        }
+
+        $input = request()->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'isbn' => 'required',
+            'category' => 'required',
+            'book_tags' => 'required',
+            'description' => 'required',
+            'cover_image_link' => 'required',
+            'book_file_link' => 'required',
+            'publisher' => 'required',
+            'edition' => 'required',
+            'total_copies' => 'required',
+            'available_copies' => 'required',
+        ]);
+
+        $book->update($input);
+        session()->flash('message', 'Book updated successfully.');
+        return redirect(route('book.index'));
     }
 
     /**
@@ -82,4 +114,18 @@ class BookController extends Controller
     {
         //
     }
+
+    public function bulkDelete(Request $request)
+    {
+        $bookIds = $request->book_ids;
+
+        if (!$bookIds || count($bookIds) == 0) {
+            return response()->json(['success' => false, 'message' => 'No books selected']);
+        }
+
+        Book::whereIn('id', $bookIds)->delete();
+
+        return response()->json(['success' => true, 'message' => 'Books deleted successfully']);
+    }
+
 }

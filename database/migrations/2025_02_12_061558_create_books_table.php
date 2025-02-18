@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('book_file_link')->nullable();
             $table->string('publisher')->nullable();
             $table->string('edition')->nullable();
+            $table->text('book_tags')->nullable();
             $table->integer('total_copies')->default(1);
             $table->integer('available_copies')->default(1);
 
